@@ -33,9 +33,9 @@ const Projects = () => {
           {
             id: 9999001,
             name: 'ReviewGameAvanade',
-            full_name: 'DuckStudios/ReviewGameAvanade',
+            full_name: 'DuckStudiosSenai/ReviewGameAvanade',
             description: 'Jogo de revisão desenvolvido para a Avanade. Experiência gamificada para treinamento e avaliação de conhecimentos.',
-            html_url: 'https://github.com/DuckStudios',
+            html_url: 'https://github.com/DuckStudiosSenai/ReviewGameAvanade',
             homepage: null,
             language: 'C#',
             stargazers_count: 0,
@@ -47,9 +47,9 @@ const Projects = () => {
           {
             id: 9999002,
             name: 'DivingSimulator',
-            full_name: 'DivingSimulator/DivingSimulatorOfficial',
+            full_name: 'Diving-Simulator/DivingSimulator',
             description: 'Simulador de mergulho oficial desenvolvido em Unity. Projeto imersivo com física realista e experiência educacional sobre mergulho.',
-            html_url: 'https://github.com/DivingSimulator',
+            html_url: 'https://github.com/Diving-Simulator',
             homepage: null,
             language: 'C#',
             stargazers_count: 0,
