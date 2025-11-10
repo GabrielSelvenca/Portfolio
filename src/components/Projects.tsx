@@ -28,8 +28,8 @@ const Projects = () => {
   const [loading, setLoading] = useState(true)
 
   useEffect(() => {
-    // Projetos de organizações (repositórios privados - adicionados manualmente)
-    const tccProjects: GitHubRepo[] = [
+    // Projetos manuais (TCC e projetos pessoais)
+    const manualProjects: GitHubRepo[] = [
           {
             id: 9999001,
             name: 'ReviewGameAvanade',
@@ -57,6 +57,34 @@ const Projects = () => {
             tags: ['Unity 3D', 'VR Desktop', 'Simulador', 'Física Realista'],
             customColor: 'from-blue-600 to-teal-600',
             customEmoji: '🤿'
+          },
+          {
+            id: 9999003,
+            name: 'AR-Shop',
+            full_name: 'GabrielSelvenca/AR-Shop',
+            description: 'Aplicativo de realidade aumentada para visualização de produtos em 3D. Experiência imersiva de compras com AR.',
+            html_url: 'https://github.com/GabrielSelvenca/AR-Shop',
+            homepage: null,
+            language: 'C#',
+            stargazers_count: 0,
+            updated_at: new Date().toISOString(),
+            tags: ['Unity', 'Realidade Aumentada', 'Mobile'],
+            customColor: 'from-pink-500 to-purple-500',
+            customEmoji: '🛍️'
+          },
+          {
+            id: 9999004,
+            name: 'Taket-It-Back',
+            full_name: 'GabrielSelvenca/Taket-It-Back',
+            description: 'Jogo desenvolvido em 7 dias para a Gaming Dojo. Projeto de game jam com mecânicas de ação e aventura.',
+            html_url: 'https://github.com/GabrielSelvenca/Taket-It-Back',
+            homepage: null,
+            language: 'C#',
+            stargazers_count: 0,
+            updated_at: new Date().toISOString(),
+            tags: ['Unity 3D', 'Game Jam', '7 Dias'],
+            customColor: 'from-orange-500 to-red-500',
+            customEmoji: '⚔️'
           }
         ]
         
@@ -95,6 +123,8 @@ const Projects = () => {
         const personalResponse = await fetch('https://api.github.com/users/GabrielSelvenca/repos?per_page=100')
         const personalData = await personalResponse.json()
         
+        console.log('Todos os repos:', personalData.map((r: GitHubRepo) => r.name))
+        
         // Filtrar apenas os projetos permitidos e adicionar tags + estilos
         const filteredPersonalRepos = personalData
           .filter((repo: GitHubRepo) => 
@@ -106,6 +136,8 @@ const Projects = () => {
             customColor: projectStyles[repo.name]?.color,
             customEmoji: projectStyles[repo.name]?.emoji
           }))
+        
+        console.log('Repos filtrados:', filteredPersonalRepos.map((r: GitHubRepo) => r.name))
         
         // Buscar organizações
         const orgsResponse = await fetch('https://api.github.com/users/GabrielSelvenca/orgs')
@@ -123,8 +155,8 @@ const Projects = () => {
           }
         }
         
-        // Combinar projetos TCC + repos pessoais + de organizações
-        const allRepos = [...tccProjects, ...filteredPersonalRepos, ...orgRepos]
+        // Usar apenas os projetos manuais (não buscar da API)
+        const allRepos = [...manualProjects]
         
         // Buscar número de commits para cada repo (exceto TCC que são privados)
         const reposWithCommits = await Promise.all(
@@ -164,8 +196,8 @@ const Projects = () => {
         setRepos(sortedRepos)
       } catch (error) {
         console.error('Erro ao buscar repositórios:', error)
-        // Em caso de erro, mostrar apenas os projetos TCC
-        setRepos(tccProjects)
+        // Em caso de erro, mostrar apenas os projetos manuais
+        setRepos(manualProjects)
       } finally {
         setLoading(false)
       }
