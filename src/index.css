@@ -1,0 +1,31 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply bg-dark text-white font-sans;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
+@layer utilities {
+  .text-gradient {
+    @apply bg-gradient-to-r from-primary to-primary-light bg-clip-text text-transparent;
+  }
+
+  .card-gradient {
+    @apply bg-gradient-to-br from-dark-card to-dark-lighter;
+  }
+
+  .glow-effect {
+    box-shadow: 0 0 20px rgba(128, 58, 243, 0.3);
+  }
+
+  .glow-effect-hover:hover {
+    box-shadow: 0 0 30px rgba(128, 58, 243, 0.5);
+  }
+}
