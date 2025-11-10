@@ -83,7 +83,7 @@ const About = () => {
             >
               <div className="relative rounded-2xl overflow-hidden border-2 border-dark-border hover:border-primary transition-all duration-300 glow-effect-hover">
                 <img
-                  src="/img/foto_eu.jpg"
+                  src={`${import.meta.env.BASE_URL}img/foto_eu.jpg`}
                   alt="Gabriel Selvenca"
                   className="w-full h-auto object-cover"
                 />

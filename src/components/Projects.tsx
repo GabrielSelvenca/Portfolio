@@ -28,10 +28,8 @@ const Projects = () => {
   const [loading, setLoading] = useState(true)
 
   useEffect(() => {
-    const fetchRepos = async () => {
-      try {
-        // Projetos de organizações (repositórios privados - adicionados manualmente)
-        const tccProjects: GitHubRepo[] = [
+    // Projetos de organizações (repositórios privados - adicionados manualmente)
+    const tccProjects: GitHubRepo[] = [
           {
             id: 9999001,
             name: 'ReviewGameAvanade',
@@ -91,6 +89,8 @@ const Projects = () => {
         // Lista específica de projetos permitidos
         const allowedProjects = ['AR-Shop', 'Taket-It-Back']
         
+    const fetchRepos = async () => {
+      try {
         // Buscar repositórios pessoais
         const personalResponse = await fetch('https://api.github.com/users/GabrielSelvenca/repos?per_page=100')
         const personalData = await personalResponse.json()
@@ -159,9 +159,13 @@ const Projects = () => {
           .sort((a, b) => (b.commitCount || 0) - (a.commitCount || 0))
           .slice(0, 9)
         
+        console.log('Repositórios carregados:', sortedRepos.length)
+        console.log('Projetos:', sortedRepos.map(r => r.name))
         setRepos(sortedRepos)
       } catch (error) {
         console.error('Erro ao buscar repositórios:', error)
+        // Em caso de erro, mostrar apenas os projetos TCC
+        setRepos(tccProjects)
       } finally {
         setLoading(false)
       }
