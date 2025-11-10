@@ -165,7 +165,7 @@ const Hero = () => {
               <div className="relative w-full max-w-md mx-auto">
                 <div className="absolute inset-0 bg-gradient-to-r from-primary to-primary-light rounded-full blur-3xl opacity-30 animate-pulse" />
                 <img
-                  src="/img/perfil.png"
+                  src={`${import.meta.env.BASE_URL}img/perfil.png`}
                   alt="Gabriel Selvenca"
                   className="relative z-10 w-full h-auto rounded-full border-4 border-primary glow-effect"
                 />
